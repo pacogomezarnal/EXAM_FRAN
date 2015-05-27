@@ -62,29 +62,34 @@ public class PerfilEquipo extends JPanel {
 		lblNacionalidad.setBounds(177, 198, 112, 24);
 		add(lblNacionalidad);
 	}
-	
+	//JTextField de panel equipo
 	public void campoDatos(){
 		campoNombre = new JTextField();
+		campoNombre.setEditable(false);
 		campoNombre.setBounds(173, 49, 134, 27);
 		add(campoNombre);
 		campoNombre.setColumns(10);
 		
 		campoId = new JTextField();
+		campoId.setEditable(false);
 		campoId.setBounds(329, 49, 90, 27);
 		add(campoId);
 		campoId.setColumns(10);
 		
 		campo1apellido = new JTextField();
+		campo1apellido.setEditable(false);
 		campo1apellido.setBounds(173, 111, 134, 27);
 		add(campo1apellido);
 		campo1apellido.setColumns(10);
 		
 		campo2apellido = new JTextField();
+		campo2apellido.setEditable(false);
 		campo2apellido.setBounds(177, 171, 134, 27);
 		add(campo2apellido);
 		campo2apellido.setColumns(10);
 		
 		campoNacionalidad = new JTextField();
+		campoNacionalidad.setEditable(false);
 		campoNacionalidad.setBounds(177, 220, 134, 27);
 		add(campoNacionalidad);
 		campoNacionalidad.setColumns(10);
