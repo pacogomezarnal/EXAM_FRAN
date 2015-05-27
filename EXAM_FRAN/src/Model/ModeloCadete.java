@@ -12,7 +12,8 @@ public class ModeloCadete {
 	
 	//Metodo que me devuelve el cadete con el id=26;
 	public Cadete loadCadete(){
-		ConexionDB conexion = ConexionDB.getInstance();
+		MySql conexion = MySql.getInstance();
+		//ConexionDB conexion = ConexionDB.getInstance();
 		int id = 26;
 		ResultSet resultado = conexion.query("SELECT * FROM cadetes WHERE id='"+id+"';");
 		

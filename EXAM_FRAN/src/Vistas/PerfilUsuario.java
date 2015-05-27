@@ -31,7 +31,7 @@ public class PerfilUsuario extends JPanel {
 		etiquetas();
 		camposDatos();
 		boton();
-		//volcadoDatos();
+		volcadoDatos();
 	}
 	
 	//JLabels del panel Usuario.
