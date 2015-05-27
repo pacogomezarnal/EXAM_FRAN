@@ -1,7 +1,9 @@
 package Model;
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -23,7 +25,7 @@ public class ConexionDB {
 	private String url;
 	
 	//Conexion
-	private static Connection conexion = null;// maneja la conexió
+	private static Connection conexion = null;// maneja la conexiï¿½
 	
 	//Instancia unica
 	private static ConexionDB instance = null;
@@ -39,16 +41,16 @@ public class ConexionDB {
 	//Implementar SingleTon
 	public static ConexionDB getInstance(String HOST,String BBDD,String USER,String PASS) {
 	      if(instance == null) {
-	         instance = null;
+	         instance = new ConexionDB(HOST, BBDD, USER, PASS);
 	      }
 	      return instance;
 	   }
-	//Este método es el mismo que el anterior pero no es necesario
-	//pasar parámetros de base de datos ya que toma los
+	//Este mï¿½todo es el mismo que el anterior pero no es necesario
+	//pasar parï¿½metros de base de datos ya que toma los
 	//valores por defecto
 	public static ConexionDB getInstance() {
 	      if(instance == null) {
-	         instance = null;
+	         instance = new ConexionDB(ConexionDB.HOST, ConexionDB.BBDD, ConexionDB.USER, ConexionDB.PASS);
 	      }
 	      return instance;
 	  }
@@ -56,7 +58,7 @@ public class ConexionDB {
 	//Metodo que permite la conexion a la base de datos
 	public boolean connectDB(){
 		try{
-			//Lo primero es cargar el controlador MySQL el cual automáticamente se registra
+			//Lo primero es cargar el controlador MySQL el cual automï¿½ticamente se registra
 			Class.forName(CONTROLADOR_MYSQL);
 			//Conectarnos a la BBDD
 			conexion = DriverManager.getConnection(this.url,this.user,this.pass);
@@ -77,6 +79,29 @@ public class ConexionDB {
 	//Metodo que devuelve la conexion a la base de datos
 	public static Connection getConexion(){
 		return conexion;
+	}
+	
+	//Con este metodo hago los selects
+	public ResultSet query(String query){
+	
+	
+		Statement st;
+		ResultSet rs = null;
+
+		try {
+			st = conexion.createStatement();
+			try{
+				rs = st.executeQuery(query);
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+	
+		} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
+		return rs;	
+									
 	}
 
 }
