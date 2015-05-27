@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Controllers.CadeteController;
-import Controllers.MainController;
 
 public class PerfilUsuario extends JPanel {
 	private JTextField campoNombre;
@@ -100,8 +99,11 @@ public class PerfilUsuario extends JPanel {
 		JButton btnSiguiente = new JButton("Siguiente >>");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				panelEquipo = new PerfilEquipo();
+				principal.getContentPane().add("PerfilEquipo", panelEquipo);
+				
 				CardLayout layout = (CardLayout) principal.getContentPane().getLayout();
-				layout.show(principal, "panelEquipo");
+				layout.show(principal, "PerfilEquipo");
 			}
 		});
 		btnSiguiente.setBounds(296, 253, 117, 29);
